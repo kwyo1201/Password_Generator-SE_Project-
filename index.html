@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+  <!-- <script type= "module" src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"> -->
+</script> 
+<script src="imports/chance.js"></script>
+<script src="imports/randomwords.js"></script>
+<script src="imports/seedrandom.js"></script>
+<!-- <script src="script.js"></script> -->
+<script src="model.js"></script>
+<script src="view.js"></script>
+<script src="controller.js"></script>
+<body>
+  
+  <Button>Generate Password</Button>
+  <p>Password</p>
+  <form onsubmit="return mySubmit(event)">
+    <p>Please select your password algo:</p>
+  <input type="radio" id="character" name="algo" value="characters">
+  <label for="character">Random Characters</label><br>
+  <input type="radio" id="words" name="algo" value="words">
+  <label for="words">Random Words</label><br>
+  
+  <label for="length">Password Length</label>
+  <input type="number" id="length" value="8" min="1" max="50" step="1"><br>
+  <input type="checkbox" id="symbol">
+  <label for="symbol">Contain Symbols</label><br>
+  <input type="checkbox" id="numeric">
+  <label for="symbol">Contain Numbers</label><br>
+  <!--    
+  <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+  <label for="javascript">Random words with permutations</label>
+    <br>  
+    <p>Please select your age:</p>
+    <input type="radio" id="age1" name="age" value="30">
+    <label for="age1">0 - 30</label><br>
+    <input type="radio" id="age2" name="age" value="60">
+    <label for="age2">31 - 60</label><br>
+    <input type="radio" id="age3" name="age" value="100">
+    <label for="age3">61 - 100</label><br><br>
+-->
+
+  <input type="submit" value="Submit">
+  </form>
+  <p id="passcontainer">Password!</p>
+  
+</body>
+</html>
