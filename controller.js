@@ -2,6 +2,7 @@ function mySubmit(e) {
     e.preventDefault(); 
     try {
     // generatePassword();
+    /*
     switch(checkPwAlgo()){
         case "characters":
             var mypw =generateCharPW(checkParams());
@@ -15,6 +16,16 @@ function mySubmit(e) {
         alert("Please select a password algorithm!");
         break;
     }
+      */
+     //let temp = generateWordPW();
+     //temp=generatePassword("no","what");
+      var mypw =generatePassword(checkParams(),checkPwAlgo());
+        setPassword(mypw+ "\n Score:"+zxcvbnts.core.zxcvbn(mypw).score );
+    let ELMO=zxcvbnts.core.zxcvbn(mypw).crackTimesDisplay;
+    console.log(zxcvbnts.core.zxcvbn(mypw));
+    console.log(ELMO);
+    console.log(ELMO.onlineThrottling100PerHour);
+   // alert(ELMO);
     } catch (e) {
      throw new Error(e.message);
     }
@@ -53,9 +64,17 @@ function checkParams(){
     } else {
       pwparams['symbols']=false;
     }
+    if(selectedCheckBoxes.includes("capitalLetters")){
+      pwparams['capitalLetters']=true;
+      } else {
+        pwparams['capitalLetters']=false;
+      }
     pwparams['alpha']=true;
-  
+  //alert("Checking params:")
     var length=document.getElementById('length').value;
+   // alert("Checking params:"+ length)
     pwparams['length']=length;
+    //alert("Checking params:"+ pwparams['length']);
+    
     return pwparams;
 }
