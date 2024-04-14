@@ -3,21 +3,35 @@ var generatedpass= document.getElementById('passcontainer');
 
 function generatePassword(params, algoType){
   //Grab Length
-  if(algoType=="characters"){
-    return generateCharPW(params);
-  }
   let targetLength = params['length'];
   let includeNumbers=params['numeric'];
   let includeSymbols=params['symbols'];
-
-  //Specify quantity of numbers and symbols for each pw generation 'round' until completion
   let tokenCount= 1;
   var currentLength;
-  currentLength=0;
+  currentLength=0;let pwarray = [];
+  let pwstring="";
+  if(algoType=="characters"){
+    if(!params["capitalLetters"]){params["casing"]="lower";}
+    pwstring=generateCharPW(params);
+    for(let i=0;i<params.userArray.length;i++){
+      pwstring=insertString(pwstring,params.userArray[i]);
+    }
+    //return generateCharPW(params);zxcvbnts.core.zxcvbn(pwstring).score
+    return {pw : pwstring, score : zxcvbnts.core.zxcvbn(pwstring).score}
+  }
+  
+
+  //Specify quantity of numbers and symbols for each pw generation 'round' until completion
+  
   //Create pool 
-  let pwarray = [];
-  //let algoType="Word";
+  
+  //Add user input into the pool
+  for(let i=0;i<params.userArray.length;i++){
+    pwarray.push(params.userArray[i]);
+  }
+  
   while(currentLength<targetLength){
+    //Add random [type] to pool
     pwarray.push(useAlgo(algoType))
     
     if(includeNumbers){
@@ -26,25 +40,31 @@ function generatePassword(params, algoType){
     if(includeSymbols){
       pwarray.push(provideSymbol());
     }
-        pwarray=scrambleArray(pwarray);
-        currentLength=totalLength(pwarray);
+    //Scramble pool
+    pwarray=scrambleArray(pwarray);
+    currentLength=totalLength(pwarray);
+    //check if generation must continue
   }
-  //Add random [type] to pool
+  
 
-  //Add tokens
 
-  //Scramble pool
+  
 
-  //check if generation must continue
+  
 
   //Assemble pool into a string
-  return pwarray.join("")
-  
+  //return pwarray.join("")
+  pwstring=pwarray.join("");
+  //alert(pwstring);
+  //alert(zxcvbnts.core.zxcvbn(pwstring).score)
+  let myobject={pw : pwstring, score : zxcvbnts.core.zxcvbn(pwstring).score}
+  return myobject;
 }
-function generateCharPW( params){
+function generateCharPW(params){
     return rand.string(params);
 
    }
+//generateWordPW is no longer used
 function generateWordPW(params){
   alert("Generating word pw!");
   //generate() generates a 
@@ -162,4 +182,9 @@ function provideNumber(){
 }
 function provideSymbol(){
   return rand.character({symbols: true});
+}
+function insertString(originalString,addString){
+  randomIndex=Math.floor(Math.random()*(originalString.length + 1));
+  var finalString= originalString.slice(0,randomIndex) + addString + originalString.slice(randomIndex);
+  return finalString
 }

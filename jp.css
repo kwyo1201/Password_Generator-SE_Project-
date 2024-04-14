@@ -1,0 +1,29 @@
+#strategy {
+    display:flex;
+    justify-content: center;
+    
+}
+#options {
+    
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content:space-between;
+}
+#lowerSection{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-evenly;
+}
+#pwchecker{
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+}
+#mainContent{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}

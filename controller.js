@@ -1,31 +1,7 @@
 function mySubmit(e) { 
     e.preventDefault(); 
     try {
-    // generatePassword();
-    /*
-    switch(checkPwAlgo()){
-        case "characters":
-            var mypw =generateCharPW(checkParams());
-            setPassword(mypw);
-            break;
-        case "words":
-            var mypw=generateWordPW(checkParams());
-            setPassword(mypw);
-        break;
-        default:
-        alert("Please select a password algorithm!");
-        break;
-    }
-      */
-     //let temp = generateWordPW();
-     //temp=generatePassword("no","what");
-      var mypw =generatePassword(checkParams(),checkPwAlgo());
-        setPassword(mypw+ "\n Score:"+zxcvbnts.core.zxcvbn(mypw).score );
-    let ELMO=zxcvbnts.core.zxcvbn(mypw).crackTimesDisplay;
-    console.log(zxcvbnts.core.zxcvbn(mypw));
-    console.log(ELMO);
-    console.log(ELMO.onlineThrottling100PerHour);
-   // alert(ELMO);
+    showPasswords(checkPwCount());
     } catch (e) {
      throw new Error(e.message);
     }
@@ -75,6 +51,16 @@ function checkParams(){
    // alert("Checking params:"+ length)
     pwparams['length']=length;
     //alert("Checking params:"+ pwparams['length']);
+    pwparams['userArray']=checkUserInput();
     
     return pwparams;
+}
+function checkUserInput(){
+  var input = document.getElementById("list").value;
+  //Split the array by commas and trim whitespace
+  var inputArray=input.split(',').map(item => item.trim());
+  return inputArray;
+}
+function checkPwCount(){
+  return document.getElementById('numpw').value;
 }

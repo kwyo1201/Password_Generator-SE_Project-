@@ -63,6 +63,16 @@ form {
     left: 1110px;
     top: 30px;
 }
+.logout{
+    color: white;
+    position: absolute;
+    left: 1120px;
+    top: 30px;
+
+}
+.logout:hover {
+text-decoration: underline;
+}
 input[type="submit"] {
     background-color: green;
     font-family: Andale Mono, monospace;
@@ -73,6 +83,10 @@ input[type="submit"] {
     padding: 15px 30x; 
     font-size: 16.5px;
     
+}
+input[type="submit"]:hover {
+    background-color: orange;
+
 }
 button[type="submit"] {
     padding: 10px;
@@ -99,145 +113,78 @@ body{
 
 .param { 
     text-align: center;
-
-
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+.sp{
+    text-align: center;
+    position: relative;
+    top: 20px;
 
-*{
-   font-family: 'Poppins', sans-serif;
-   margin:0; padding:0;
-   box-sizing: border-box;
-   outline: none; border:none;
-   text-decoration: none;
 }
+.container {
+    position: relative; 
+    width: 100%; 
+    height: 100vh; 
+  }
+.box{
 
-.container{
-   min-height: 100vh;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   padding:20px;
-   padding-bottom: 60px;
+    width: 300px; 
+    height: 200px; 
+    background-color:rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border: 3px solid white;
+    color: white;
+    border-radius: 15px;
+    position: absolute; 
+  top: 21%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+
+    
 }
-
-.container .content{
-   text-align: center;
+.pwbox{
+    margin: 0; 
+    padding: 0;
+    text-align: center;
 }
+.twobuttons{
+    text-align: center;
+    position: absolute;
+    top: 43%; 
+    left: 50%;
+    transform: translateX(-50%);
 
-.container .content h3{
-   font-size: 30px;
-   color:#333;
 }
+.save-passwords, .save-all {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: uppercase;
+  }
 
-.container .content h3 span{
-   background: crimson;
-   color:#fff;
-   border-radius: 5px;
-   padding:0 15px;
+  .save-passwords{
+    background-color: #008CBA;
+    color: white;
+  }
+
+  .save-all{
+    background-color: #4CAF50; 
+    color: white;
+  }
+
+  .save-passwords:hover {
+    background-color: #555;
+
+  }
+
+  .save-all:hover{
+    background-color: #555;
+
+  }
+.right-side{
+  text-align: right;
 }
-
-.container .content h1{
-   font-size: 50px;
-   color:#333;
-}
-
-.container .content h1 span{
-   color:crimson;
-}
-
-.container .content p{
-   font-size: 25px;
-   margin-bottom: 20px;
-}
-
-.container .content .btn{
-   display: inline-block;
-   padding:10px 30px;
-   font-size: 20px;
-   background: #333;
-   color:#fff;
-   margin:0 5px;
-   text-transform: capitalize;
-}
-
-.container .content .btn:hover{
-   background: crimson;
-}
-
-.form-container{
-   min-height: 100vh;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   padding:20px;
-   padding-bottom: 60px;
-   background: #eee;
-}
-
-.form-container form{
-   padding:20px;
-   border-radius: 5px;
-   box-shadow: 0 5px 10px rgba(0,0,0,.1);
-   background: #fff;
-   text-align: center;
-   width: 500px;
-}
-
-.form-container form h3{
-   font-size: 30px;
-   text-transform: uppercase;
-   margin-bottom: 10px;
-   color:#333;
-}
-
-.form-container form input,
-.form-container form select{
-   width: 100%;
-   padding:10px 15px;
-   font-size: 17px;
-   margin:8px 0;
-   background: #eee;
-   border-radius: 5px;
-}
-
-.form-container form select option{
-   background: #fff;
-}
-
-.form-container form .form-btn{
-   background: #fbd0d9;
-   color:crimson;
-   text-transform: capitalize;
-   font-size: 20px;
-   cursor: pointer;
-}
-
-.form-container form .form-btn:hover{
-   background: crimson;
-   color:#fff;
-}
-
-.form-container form p{
-   margin-top: 10px;
-   font-size: 20px;
-   color:#333;
-}
-
-.form-container form p a{
-   color:crimson;
-}
-
-.form-container form .error-msg{
-   margin:10px 0;
-   display: block;
-   background: crimson;
-   color:#fff;
-   border-radius: 5px;
-   font-size: 20px;
-   padding:10px;
-}
-
-
 
