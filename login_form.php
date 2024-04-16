@@ -1,76 +1,70 @@
 <?php
-
-@include 'config.php';
+include 'config.php';  // Include database settings
 
 session_start();
 
-if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $pass = md5($_POST['password']);
 
-   $name = mysqli_real_escape_string($conn, $_POST['name']);
-   $email = mysqli_real_escape_string($conn, $_POST['email']);
-   $pass = md5($_POST['password']);
-   $cpass = md5($_POST['cpassword']);
-   $user_type = $_POST['user_type'];
+    // Login queries with parameter binding for security
+    $stmt = $conn->prepare("SELECT * FROM user_form WHERE email = ? AND password = ?");
+    $stmt->bind_param("ss", $email, $pass);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-   $select = " SELECT * FROM user_form WHERE email = '$email' && password = '$pass' ";
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
+        $_SESSION['user_id'] = $user['id'];  // Save User ID to Session
 
-   $result = mysqli_query($conn, $select);
-
-   if(mysqli_num_rows($result) > 0){
-
-      $row = mysqli_fetch_array($result);
-
-      if($row['user_type'] == 'admin'){
-
-         $_SESSION['admin_name'] = $row['name'];
-         header('location:admin_page.php');
-
-      }elseif($row['user_type'] == 'user'){
-
-         $_SESSION['user_name'] = $row['name'];
-         header('location:user_page.php');
-
-      }
-     
-   }else{
-      $error[] = 'incorrect email or password!';
-   }
-
-};
+        header('Location: dashboard.php');
+        exit();
+    } else {
+        $error[] = 'incorrect email or password!';
+    }
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>login form</title>
-
-   <!-- custom css file link  -->
-   <link rel="stylesheet" href="pw.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator - Login</title>
+    <link rel="stylesheet" href="pw.css">
 </head>
 <body>
-   
-<div class="form-container">
+    <header>
+      <a href="index.html" class="index-link">
+        <h1>Password Generator</h1>
+            </a>
+        <div class = "log">
+            <a href="login_form.php">Login</a>
+            |
+             <a href="register_form.php">Register</a>
+             </div>
+            
+             
+         
+                <button class ="button">Password Manager</button>
+    
+    
+        </header>
+        <main>
+         
+            <section class = "reglog">
+              <h2 class = "logreg">Login</h2>
+              <form id="loginForm" action="" method="post">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" required> <!-- name을 username에서 email로 변경 -->
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit" name="submit">Login</button> <!-- 제출 버튼에 name 속성 추가 -->
+                <p>don't have an account? <a href="register_form.php">Sign Up</a></p>
+              </form>
 
-   <form action="" method="post">
-      <h3>login now</h3>
-      <?php
-      if(isset($error)){
-         foreach($error as $error){
-            echo '<span class="error-msg">'.$error.'</span>';
-         };
-      };
-      ?>
-      <input type="email" name="email" required placeholder="enter your email">
-      <input type="password" name="password" required placeholder="enter your password">
-      <input type="submit" name="submit" value="login now" class="form-btn">
-      <p>don't have an account? <a href="register_form.php">register now</a></p>
-   </form>
-
-</div>
-
+            </section>
+          </main>  
+    
 </body>
 </html>
+

@@ -69,6 +69,31 @@ function saveClick(password, button){
     button.textContent="Saved!";
     savePassword(password.pw);
 }
-function savePassword(password){
-
+function savePassword(password) {
+    fetch('savePassword.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `password=${encodeURIComponent(password)}&user_id=${encodeURIComponent(sessionStorage.getItem('user_id'))}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log('Password saved successfully:', password);
+            document.getElementById('passcontainer').innerText = password;
+        } else {
+            console.error('Error:', data.message);
+            if (data.message.includes("duplicate")) {
+                // Trigger password regeneration if duplicate
+                console.warn('Duplicate password detected, generating a new one.');
+                var newPassword = generatePassword();
+                console.log('Regenerated Password:', newPassword);
+                savePassword(newPassword);
+            }
+        }
+    })
+    .catch(error => {
+        console.error('Error with fetch operation:', error);
+    });
 }

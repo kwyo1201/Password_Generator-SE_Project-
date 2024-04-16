@@ -1,3 +1,12 @@
+<?php
+    session_start(); // 세션 시작
+    if (!isset($_SESSION['user_id'])) {
+        // 사용자가 로그인하지 않았다면, 로그인 페이지로 리다이렉트
+        header("Location: login_form.php");
+        exit();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,17 +42,17 @@
 </head>
 <body>
     <header>
-        <a href="index.html" class="index-link">
-    <h1>Password Generator</h1>
+    <a href="dashboard.php" class="index-link">
+            <h1>Password Generator</h1>
         </a>
-    <div class = "log">
-        <a href="login_form.php" class="btn">Login</a>
-        |
-      <a href="register_form.php" class="btn">Register</a>
-         </div>
-         <a href="password_manager.php">
-            <button class ="button">Password Manager</button>
-            </a>
+        <a href="password_manager.php">
+            <button class="button">Password Manager</button>
+        </a>
+        <a href="logout.php" class="index-link">
+            <div class="logout">
+                Log Out
+            </div>
+        </a>
     </header>
     <main class = "main">
       <div class="line"></div>
@@ -148,3 +157,6 @@
 </body>
 <script src="view.js"></script>
 </html>
+
+
+

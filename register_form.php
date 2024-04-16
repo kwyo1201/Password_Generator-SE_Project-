@@ -8,7 +8,6 @@ if(isset($_POST['submit'])){
    $email = mysqli_real_escape_string($conn, $_POST['email']);
    $pass = md5($_POST['password']);
    $cpass = md5($_POST['cpassword']);
-   $user_type = $_POST['user_type'];
 
    $select = " SELECT * FROM user_form WHERE email = '$email' && password = '$pass' ";
 
@@ -23,7 +22,7 @@ if(isset($_POST['submit'])){
       if($pass != $cpass){
          $error[] = 'password not matched!';
       }else{
-         $insert = "INSERT INTO user_form(name, email, password, user_type) VALUES('$name','$email','$pass','$user_type')";
+         $insert = "INSERT INTO user_form(name, email, password) VALUES('$name','$email','$pass')";
          mysqli_query($conn, $insert);
          header('location:login_form.php');
       }
@@ -37,41 +36,41 @@ if(isset($_POST['submit'])){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>register form</title>
-
-   <!-- custom css file link  -->
-   <link rel="stylesheet" href="pw.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator - Register</title>
+    <link rel="stylesheet" href="pw.css">
 </head>
 <body>
-   
-<div class="form-container">
-
-   <form action="" method="post">
-      <h3>register now</h3>
-      <?php
-      if(isset($error)){
-         foreach($error as $error){
-            echo '<span class="error-msg">'.$error.'</span>';
-         };
-      };
-      ?>
-      <input type="text" name="name" required placeholder="enter your name">
-      <input type="email" name="email" required placeholder="enter your email">
-      <input type="password" name="password" required placeholder="enter your password">
-      <input type="password" name="cpassword" required placeholder="confirm your password">
-      <select name="user_type">
-         <option value="user">user</option>
-         <option value="admin">admin</option>
-      </select>
-      <input type="submit" name="submit" value="register now" class="form-btn">
-      <p>already have an account? <a href="login_form.php">login now</a></p>
-   </form>
-
-</div>
-
+    <header>
+      <a href="index.html" class="index-link">
+        <h1>Password Generator</h1>
+            </a>
+        <div class = "log">
+            <a href="login_form.php">Login</a>
+            |
+             <a href="register_form.php">Register</a>
+             </div>
+            
+             
+         
+                <button class ="button">Password Manager</button>
+    
+    
+        </header>
+        <main>
+            <!-- Registration Form -->
+            <section class = "reglog">
+              <h2 class = "logreg">Register</h2>
+              <form id="registrationForm" action="" method="post" onsubmit="return validateForm()">
+              <input type="text" name="name" required placeholder="enter your name">
+              <input type="email" name="email" required placeholder="enter your email">
+              <input type="password" name="password" required placeholder="enter your password">
+              <input type="password" name="cpassword" required placeholder="confirm your password">
+              <input type="submit" name="submit" value="register now" class="form-btn">
+              </form>
+            </section>
+          </main>
+    
 </body>
 </html>
