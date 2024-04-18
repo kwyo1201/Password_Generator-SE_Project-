@@ -9,9 +9,16 @@
 
 <body>
     <header>
-        <a href="dashboard.php" class="index-link">
-            <h1>Password Generator</h1>
-        </a>
+    <?php
+        session_start(); // Start the session
+
+        // Check if the user is logged in and set the appropriate link
+        if (isset($_SESSION['user_id'])) {
+            echo '<a href="dashboard.php" class="index-link"><h1>Password Generator</h1></a>';
+        } else {
+            echo '<a href="index.html" class="index-link"><h1>Password Generator</h1></a>';
+        }
+        ?>
     </header>
 
     <h1 class="sp">Saved Passwords:</h1>

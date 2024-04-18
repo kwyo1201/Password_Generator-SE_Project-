@@ -50,6 +50,7 @@ if(isset($_POST['submit'])){
             <a href="login_form.php">Login</a>
             |
              <a href="register_form.php">Register</a>
+             
              </div>
             
              

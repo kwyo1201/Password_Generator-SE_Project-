@@ -46,12 +46,56 @@
             </a>
     </header>
     <main class = "main">
-      <div class="line"></div>
+      
+<div class="flexrow">
 
+  <div class="flexcolumn">
+      <div class="param boxxy">
+        <h3>Select Parameters</h3>
+    <body>
+      <form onsubmit="return mySubmit(event)">
+        <p>Please select your password generation strategy:</p>
+      <div id="strategy">
+      <input type="radio" id="character" name="algo" value="characters" checked="checked">
+      <label for="character">Random Characters</label>
+      <input type="radio" id="words" name="algo" value="words">
+      <label for="words">Random Words</label>
+      <input type="radio" id="perms" name="algo" value="perms">
+      <label for="words">Random Leet Words</label>
+      <input type="radio" id="syllables" name="algo" value="syllables">
+      <label for="words">Random Syllables</label>
+      </div>
+    <div><label for="length">Password Length</label><input type="number" id="length" value="8" min="1" max="50" step="1"></div>
     
-    <br>
-    <div class = "box">
-    <table class="table">
+      <div id="options">
+        <div><label for="symbol">Add Symbols</label><input type="checkbox" id="symbol"></div>
+        <div><label for="symbol">Add Numbers</label><input type="checkbox" id="numeric"></div>
+        <div><label for="symbol">Contain Capital Letter(s)</label><input type="checkbox" id="capitalLetters"></div>
+      </div>
+      <label for="list">Enter comma-separated list of words to include in your password:</label>
+      <input type="text" id="list" name="list">
+      <div><label for="length">Number of Passwords</label><input type="number" id="numpw" value="20" min="1" max="50" step="1"></div>
+      <br>
+      <input type="submit" value="Generate!">
+      </form>
+      
+        </div>
+        <table id="password-table" class="boxxy">
+      <thead><tr><th>Password</th><th>Score</th><th>Actions</th></tr></thead>
+      <tbody id="password-table-body">
+
+      </tbody>
+
+    </table>
+
+  </div>
+  <div class="flexcolumn">
+<table id="pwchecker" class="boxxy">
+      <thead><tr><td>Check your password's strength:</td><td><input type="text" id="testpw" name="list"></td></tr></thead>
+      <tbody id="checker-table-body"><tr><td>Length</td><td>0</td></tr><tr><td>Average # of guesses to crack</td><td>12</td></tr><tr><td>Score</td><td>0</td></tr><tr><td>Online Throttled Attack (100 Guesses/hr)</td><td>7 minutes</td></tr><tr><td>Online Unthrottled Attack (10 Guesses/sec)</td><td>1 second</td></tr><tr><td>Offline Slow Hashing Attack (e^4 Guesses/sec)</td><td>less than a second</td></tr><tr><td>Offline Fast Hashing Attack (e^10 Guesses/sec)</td><td>less than a second</td></tr><tr><td>Suggestion</td><td>Add more words that are less common.</td></tr></tbody>
+
+    </table>
+    <table class="table box">
       <thead>
       <tr>
       <th style="text-align: center;">Score</th>
@@ -87,60 +131,8 @@
       </tr>
       </tbody>
     </table>    
-    </div>
-<br><br><br>
-<div id="mainContent">
-
-<br>
-<div class="param">
-    <h3>Select Parameters</h3>
-<body>
-  <form onsubmit="return mySubmit(event)">
-    <p>Please select your password generation strategy:</p>
-  <div id="strategy">
-  <input type="radio" id="character" name="algo" value="characters" checked="checked">
-  <label for="character">Random Characters</label>
-  <input type="radio" id="words" name="algo" value="words">
-  <label for="words">Random Words</label>
-  <input type="radio" id="perms" name="algo" value="perms">
-  <label for="words">Random Leet Words</label>
-  <input type="radio" id="syllables" name="algo" value="syllables">
-  <label for="words">Random Syllables</label>
   </div>
-<div><label for="length">Password Length</label><input type="number" id="length" value="8" min="1" max="50" step="1"></div>
-
-  <div id="options">
-    <div><label for="symbol">Add Symbols</label><input type="checkbox" id="symbol"></div>
-    <div><label for="symbol">Add Numbers</label><input type="checkbox" id="numeric"></div>
-    <div><label for="symbol">Contain Capital Letter(s)</label><input type="checkbox" id="capitalLetters"></div>
-  </div>
-  <label for="list">Enter comma-separated list of words to include in your password:</label>
-  <input type="text" id="list" name="list">
-  <div><label for="length">Number of Passwords</label><input type="number" id="numpw" value="20" min="1" max="50" step="1"></div>
-  <br>
-  <input type="submit" value="Generate!">
-  </form>
-  
-    </div>
-    <br>
-<div id="lowerSection">
-
-  
-    <table id="password-table">
-      <thead><tr><th>Password</th><th>Score</th><th>Actions</th></tr></thead>
-      <tbody id="password-table-body">
-
-      </tbody>
-
-    </table>
-     
-    <table id="pwchecker">
-      <thead><tr><td>Check your password's strength:</td><td><input type="text" id="testpw" name="list"></td></tr></thead>
-      <tbody id="checker-table-body"><tr><td>Length</td><td>0</td></tr><tr><td>Average # of guesses to crack</td><td>12</td></tr><tr><td>Score</td><td>0</td></tr><tr><td>Online Throttled Attack (100 Guesses/hr)</td><td>7 minutes</td></tr><tr><td>Online Unthrottled Attack (10 Guesses/sec)</td><td>1 second</td></tr><tr><td>Offline Slow Hashing Attack (e^4 Guesses/sec)</td><td>less than a second</td></tr><tr><td>Offline Fast Hashing Attack (e^10 Guesses/sec)</td><td>less than a second</td></tr><tr><td>Suggestion</td><td>Add more words that are less common.</td></tr></tbody>
-
-    </table>
-</div>
-</div>
+</div> 
     </main>
 
     

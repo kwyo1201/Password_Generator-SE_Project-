@@ -3,7 +3,7 @@ header{
     font-family: Andale Mono, monospace;
     color: cornsilk;
     background-color: black;
-    padding: 10px;
+    padding: 3px;
 
 }
 .index-link{
@@ -46,9 +46,7 @@ form {
     margin: 0 auto;
   }
 .button {
-    position: absolute;
-    left: 950px;
-    top: 30px;
+    
     font-family: Andale Mono, monospace	;
     background-color: rgb(59, 111, 132);
     color: white;
@@ -57,13 +55,13 @@ form {
 
 }
 
-
-
-
 .log{
-    position: absolute;
-    left: 1110px;
-    top: 30px;
+    text-align: right;
+    margin-right: 14px;
+   
+}
+.main{
+  margin-top: 10px;
 }
 .logout{
     color: white;
@@ -129,14 +127,21 @@ body{
     height: 100vh; 
   }
 .box{
-    width: 340px; 
-    height: 200px; 
+    
     background-color:rgba(255, 255, 255, 0.2);
     padding: 20px;
     border: 3px solid white;
     color: white;
     border-radius: 15px;
-    position: absolute;
+    
+}
+.boxxy{
+ 
+  background-color:rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  border: 3px solid white;
+  color: white;
+  border-radius: 15px;
 }
 .pwbox{
     margin: 0; 

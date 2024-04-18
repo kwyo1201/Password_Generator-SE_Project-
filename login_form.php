@@ -59,7 +59,7 @@ if (isset($_POST['submit'])) {
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
                 <button type="submit" name="submit">Login</button> <!-- 제출 버튼에 name 속성 추가 -->
-                <p>don't have an account? <a href="register_form.php">Sign Up</a></p>
+                <p>don't have an account? <a href="register_form.php">Register</a></p>
               </form>
 
             </section>
